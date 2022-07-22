@@ -48,13 +48,14 @@ class Home extends Component {
 
     Axios({
       method: "POST",
-      url: "http://localhost:8080/add/item",
+      url: "http://localhost:8080/item",
       data: {jsonObject},
       headers: {
         "Content-Type": "application/json"
-      }
+      },
+      withCredentials: true
     }).then(res => {
-        console.log(res.data.message);
+      console.log(res.data.message);
     });
 
     // Create a array that contains the current array and the new todo item
@@ -64,6 +65,12 @@ class Home extends Component {
       todos: new_list,
     });
   };
+
+  updateTodo = (id, newTodo) => {
+    if (newTodo.content.trim() === null || newTodo.content.trim() === ''){ return }
+    this.setState(prev => prev.map(item => (item.id === id ? newTodo : item)))
+  }
+  
   render() {
     return (
       <div className="Home">
