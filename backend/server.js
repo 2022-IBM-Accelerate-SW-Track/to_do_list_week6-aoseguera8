@@ -46,7 +46,7 @@ app.get("/", (req, res) => {
   });
   
 //add new item to json file
-app.post("/items", cookieAuth, addItem)
+app.post("/items", cookieAuth, addItem);
 
 function addItem (request, response) {
     // Converting Javascript object (Task Item) to a JSON string

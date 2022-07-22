@@ -65,6 +65,12 @@ class Home extends Component {
       todos: new_list,
     });
   };
+
+  updateTodo = (id, newTodo) => {
+    if (newTodo.content.trim() === null || newTodo.content.trim() === ''){ return }
+    this.setState(prev => prev.map(item => (item.id === id ? newTodo : item)))
+  }
+  
   render() {
     return (
       <div className="Home">
